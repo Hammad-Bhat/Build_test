@@ -38,3 +38,5 @@ int main(int argc, char **argv)
     printf("fibonacci(%d) = %d\n", n, fib);
     return(0);
 }
+
+  printf("fibonacci(%d) = %d\n", n, fib);
