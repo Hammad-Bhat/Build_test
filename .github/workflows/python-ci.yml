@@ -33,8 +33,6 @@ jobs:
 
       - name: Run tests
         run: |
-          if [ -d python/tests ]; then
-            pytest python/tests
-          else
-            echo "No tests found"
-          fi
+            pytest python/math/tests/test_fibonacci.py
+        
+
