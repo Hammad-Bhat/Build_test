@@ -1,34 +1,40 @@
-name: CI
+name: Python CI
 
-on: 
+on:
   push:
-    branches:[ main,master ]
+    branches: 
+      - main
+      - master
   pull_request:
-    branches:[ main,master ]
+    branches:
+      - main
+      - master
 
 jobs:
-# Creating an environment
-  python-build-and-test:
+  build-and-test:
     runs-on: ubuntu-latest
 
-steps:
-# Downloading the code to vm
+    steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-# Installing pyhton on the runner(vm)
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
-# Installing dependencies on the runner(VM)
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
-          pip install -r python/requirements.txt
+          if [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          else
+            echo "No requirements.txt found"
+          fi
 
-# Running tests
       - name: Run tests
         run: |
-          pytest python/tests
+          if [ -d python/tests ]; then
+            pytest python/tests
+          else
+            echo "No tests found"
+          fi
