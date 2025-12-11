@@ -33,9 +33,8 @@ jobs:
 
       - name: Install pytest
         run: pip install pytest
-        
+
       - name: Run tests
-        run: |
-            pytest python/math/tests/test_fibonacci.py
+        run:  pytest python/math/tests/test_fibonacci.py
         
 
