@@ -47,4 +47,3 @@ if __name__ == '__main__':
   fib = fibonacci(n)
   print("fibonacci(%d) = %d" % (n, fib))
 
-print("fibonacci(%d) = %d" % (n, fib))
