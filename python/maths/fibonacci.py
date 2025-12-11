@@ -46,3 +46,5 @@ if __name__ == '__main__':
     exit(2)
   fib = fibonacci(n)
   print("fibonacci(%d) = %d" % (n, fib))
+
+print("fibonacci(%d) = %d" % (n, fib))
