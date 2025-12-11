@@ -31,6 +31,9 @@ jobs:
             echo "No requirements.txt found"
           fi
 
+      - name: Install pytest
+        run: pip install pytest
+        
       - name: Run tests
         run: |
             pytest python/math/tests/test_fibonacci.py
