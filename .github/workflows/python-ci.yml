@@ -13,6 +13,8 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+    env:
+      FIB_NUMBER: 10
 
 # downloading the git repo into the vm (runner)/ cloning it
     steps:
@@ -31,6 +33,10 @@ jobs:
 
       - name: Install dependencies
         run: pip install -r requirements.txt
+
+      - name: Run Fibonacci script
+        run: python python/maths/fibonacci.py $FIB_NUMBER
+
 
 # running test
       - name: Run test
