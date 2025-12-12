@@ -1,8 +1,0 @@
-## C
-
-*.o
-fibonacci
-fibonacci-tests
-CUnitAutomated-Listing.xml
-CUnitAutomated-Results.xml
-TestResults.xml
