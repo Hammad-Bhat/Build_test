@@ -32,6 +32,6 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-# running tess
+# running test
       - name: Run test
         run: pytest python/maths/tests/test_fibonacci.py
