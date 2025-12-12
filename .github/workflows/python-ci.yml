@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
 # environmental variable
     env:
-      Fib_input: ${{ vars.Fib_input }}
+      Fib_input: ${{ vars.FIB_INPUT }}
 
 # downloading the git repo into the vm (runner)/ cloning it
     steps:
