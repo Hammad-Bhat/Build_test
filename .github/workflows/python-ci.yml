@@ -36,8 +36,8 @@ jobs:
         run: pip install -r requirements.txt
 
 # running the fibonacci file
-      - name: Run Fibonacci script
-        run: python python/maths/fibonacci.py $Fib_input
+      - name: Run Fibonacci
+        run: python fibonacci.py $Fib_input
 
 
 # running test
