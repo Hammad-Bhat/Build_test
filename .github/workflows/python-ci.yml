@@ -37,7 +37,7 @@ jobs:
 
 # running the fibonacci file
       - name: Run Fibonacci
-        run: python python/maths/fibonacci.py $Fib_input
+        run: python fibonacci.py $Fib_input
 
 
 # running test
