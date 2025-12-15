@@ -16,7 +16,7 @@ jobs:
 # environmental variable
     env:
      Fib_input: ${{ vars.FIB_INPUT }}
-     # Fib_input: ${{ vars.FIB_INPUT || 5}}
+     # Fib_input: ${{ vars.FIB_INPUT || 10}}
 
 # downloading the git repo into the vm (runner)/ cloning it
     steps:
@@ -36,11 +36,13 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+ # running test
+      - name: Run test
+        run: pytest python/maths/tests/test_fibonacci.py
+
 # running the fibonacci file
       - name: Run Fibonacci
         run: python python/maths/fibonacci.py $Fib_input
 
 
-# running test
-      - name: Run test
-        run: pytest python/maths/tests/test_fibonacci.py
+
