@@ -1,29 +1,35 @@
 pipeline {
     agent any
 
+    // environment {
+    //     // Default value like GitHub Actions (vars.FIB_INPUT || 7)
+    //     FIB_INPUT = "%FIB_INPUT%"
+    // }
+
     stages {
+
         stage('Checkout Code') {
             steps {
-                git branch: 'main', url: 'https://github.com/Hammad-Bhat/Build_test.git'
+                checkout scm
             }
         }
 
-        stage('Hello') {
+        stage('Install Dependencies') {
             steps {
-                echo 'Hello, Jenkins is running!'
+                bat 'pip install -r requirements.txt'
             }
         }
 
-        stage('List Workspace') {
+        stage('Run Tests') {
             steps {
-                bat 'dir'
+                bat 'pytest python\\maths\\tests\\test_fibonacci.py'
             }
         }
-    }
 
-    post {
-        always {
-            echo 'Pipeline finished!'
-        }
+        // stage('Run Fibonacci') {
+        //     steps {
+        //         bat 'python python\\maths\\fibonacci.py %FIB_INPUT%'
+        //     }
+        // }
     }
 }
