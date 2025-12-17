@@ -17,8 +17,8 @@ jobs:
       image: python:3.11-slim
 # environmental variable
     env:
-      Fib_input: ${{ vars.FIB_INPUT }}
-    #Fib_input: ${{ vars.FIB_INPUT || 7}}
+     # Fib_input: ${{ vars.FIB_INPUT }}
+       Fib_input: ${{ vars.FIB_INPUT || 7}}
 
 # downloading the git repo into the vm (runner)/ cloning it
     steps:
