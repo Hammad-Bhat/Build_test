@@ -4,8 +4,8 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git 'https://github.com/Hammad-Bhat/Build_test.git'
-            }
+                 git branch: 'main', url: 'https://github.com/Hammad-Bhat/Build_test.git'
+                }
         }
 
         stage('Install Dependencies') {
