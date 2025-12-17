@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         // Default input for Fibonacci script
-        FIB_INPUT = "%FIB_INPUT%"
+        FIB_INPUT = 7
     }
 
     stages {
