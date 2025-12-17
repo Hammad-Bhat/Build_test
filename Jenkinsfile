@@ -27,12 +27,13 @@ pipeline {
 }
 
         stage('Run Fibonacci') {
-            steps {
-                script {
-                    // Run your Fibonacci script inside container
-                    bat 'docker run --rm -v %cd%:/app -w /app python:3.11-slim python python\\\\maths\\\\fibonacci.py %FIB_INPUT%'
-                }
-            }
+        steps {
+        script {
+            // Run your Fibonacci script inside container (Linux paths)
+            bat 'docker run --rm -v %cd%:/app -w /app python:3.11-slim python python/maths/fibonacci.py %FIB_INPUT%'
         }
+    }
+}
+
     }
 }
