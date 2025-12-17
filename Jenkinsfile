@@ -1,27 +1,27 @@
 pipeline {
-    agent any  // use any available Jenkins agent
+    agent {
+        docker {
+            image 'python:3.11-slim'  // Pulls the image directly
+        }
+    }
 
     stages {
         stage('Checkout Code') {
             steps {
-                // Clone your GitHub repository
                 git branch: 'main', url: 'https://github.com/Hammad-Bhat/Build_test.git'
             }
         }
 
         stage('Install Dependencies') {
             steps {
-                // Install Python dependencies from requirements.txt
-                bat 'pip install -r requirements.txt'
+                sh 'pip install -r requirements.txt'
             }
         }
 
         stage('Run Tests') {
             steps {
-                // Run your pytest tests
-                bat 'pytest python/maths/tests/test_fibonacci.py'
+                sh 'pytest python/maths/tests/test_fibonacci.py'
             }
         }
     }
 }
-// trying
