@@ -4,20 +4,26 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                 git branch: 'main', url: 'https://github.com/Hammad-Bhat/Build_test.git'
-                }
-        }
-
-        stage('Install Dependencies') {
-            steps {
-                bat 'pip install -r requirements.txt'
+                git branch: 'main', url: 'https://github.com/Hammad-Bhat/Build_test.git'
             }
         }
 
-        stage('Run Tests') {
+        stage('Hello') {
             steps {
-                bat 'pytest python/maths/tests/test_fibonacci.py'
+                echo 'Hello, Jenkins is running!'
             }
+        }
+
+        stage('List Workspace') {
+            steps {
+                bat 'dir'
+            }
+        }
+    }
+
+    post {
+        always {
+            echo 'Pipeline finished!'
         }
     }
 }
