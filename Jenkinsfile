@@ -12,14 +12,14 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 // Install Python dependencies from requirements.txt
-                sh 'pip install -r requirements.txt'
+                bat 'pip install -r requirements.txt'
             }
         }
 
         stage('Run Tests') {
             steps {
                 // Run your pytest tests
-                sh 'pytest python/maths/tests/test_fibonacci.py'
+                bat 'pytest python/maths/tests/test_fibonacci.py'
             }
         }
     }
