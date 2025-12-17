@@ -16,8 +16,8 @@ pipeline {
         
          stage('Set up Python') {
             steps {
-                bat '"C:\\Users\\Hammad\\AppData\\Local\\Programs\\Python\\Python311\\python.exe" --version'
-                bat '"C:\\Users\\Hammad\\AppData\\Local\\Programs\\Python\\Python311\\python.exe" -m pip --version'
+                bat 'python --version'
+                bat 'pip --version'
             }
         }
 
