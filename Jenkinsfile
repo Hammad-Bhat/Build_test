@@ -13,6 +13,13 @@ pipeline {
                 checkout scm
             }
         }
+        
+         stage('Set up Python') {
+            steps {
+                bat 'python --version'
+                bat 'pip --version'
+            }
+        }
 
         stage('Install Dependencies') {
             steps {
