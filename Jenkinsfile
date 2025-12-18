@@ -1,49 +1,41 @@
 pipeline {
     agent any
 
-     environment {
-        FIB_INPUT = credentials('99')  // secret ID
+    environment {
+        FIB_INPUT = credentials('99')   // Secret Text credential
     }
-
 
     stages {
 
-        // When checkout scm is needed
-
-        // Check out multiple repos
-
-        // stage('Checkout Code') {
-        //     steps {
-        //         checkout scm
-        //     }
-        // }
-
-        stage('Pull Python Image') {
+        stage('Verify Python') {
             steps {
-                bat 'docker pull python:3.11-slim'
+                bat '''
+                python --version
+                pip --version
+                '''
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                bat '''
+                pip install --upgrade pip
+                pip install pytest
+                '''
             }
         }
 
         stage('Run Tests') {
             steps {
                 bat '''
-                docker run --rm ^
-                -v "%WORKSPACE%:/app" ^
-                -w /app ^
-                 python:3.11-slim ^
-                 sh -c "pip install pytest && python -m pytest python/maths/tests/test_fibonacci.py"
-                 '''
-    }
-}
-
+                python -m pytest python/maths/tests/test_fibonacci.py
+                '''
+            }
+        }
 
         stage('Run Fibonacci') {
             steps {
                 bat '''
-                docker run --rm ^
-                -v "%WORKSPACE%:/app" ^
-                -w /app ^
-                python:3.11-slim ^
                 python python/maths/fibonacci.py %FIB_INPUT%
                 '''
             }
