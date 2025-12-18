@@ -8,11 +8,11 @@ pipeline {
 
     stages {
 
-        stage('Checkout Code') {
-            steps {
-                checkout scm
-            }
-        }
+        // stage('Checkout Code') {
+        //     steps {
+        //         checkout scm
+        //     }
+        // }
 
         stage('Pull Python Image') {
             steps {
