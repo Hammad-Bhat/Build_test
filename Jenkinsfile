@@ -20,16 +20,17 @@ pipeline {
         }
 
         stage('Run Tests') {
-            steps {
-                bat '''
-                docker run --rm ^
-                -v "%WORKSPACE%:/app" ^
-                -w /app ^
-                python:3.11-slim ^
-                python -m pytest python/maths/tests/test_fibonacci.py
-                '''
-            }
-        }
+    steps {
+        bat '''
+        docker run --rm ^
+        -v "%WORKSPACE%:/app" ^
+        -w /app ^
+        python:3.11-slim ^
+        sh -c "pip install pytest && python -m pytest python/maths/tests/test_fibonacci.py"
+        '''
+    }
+}
+
 
         stage('Run Fibonacci') {
             steps {
