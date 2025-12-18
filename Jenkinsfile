@@ -13,21 +13,33 @@ pipeline {
             }
         }
 
-        stage('Install Dependencies') {
+        stage('Pull Python Image') {
             steps {
-                bat 'pip install -r requirements.txt'
+                bat 'docker pull python:3.11-slim'
             }
         }
 
         stage('Run Tests') {
             steps {
-                bat 'pytest python/maths/tests/test_fibonacci.py'
+                bat '''
+                docker run --rm ^
+                -v "%WORKSPACE%:/app" ^
+                -w /app ^
+                python:3.11-slim ^
+                python -m pytest python/maths/tests/test_fibonacci.py
+                '''
             }
         }
 
         stage('Run Fibonacci') {
             steps {
-                bat 'python python/maths/fibonacci.py %FIB_INPUT%'
+                bat '''
+                docker run --rm ^
+                -v "%WORKSPACE%:/app" ^
+                -w /app ^
+                python:3.11-slim ^
+                python python/maths/fibonacci.py %FIB_INPUT%
+                '''
             }
         }
     }
