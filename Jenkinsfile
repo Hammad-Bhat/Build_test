@@ -9,7 +9,7 @@ pipeline {
 
         stage('Verify Python') {
             steps {
-                bat 'python.exe --version'
+                bat 'python --version'
             }
         }
 
