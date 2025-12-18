@@ -8,6 +8,10 @@ pipeline {
 
     stages {
 
+        // When checkout scm is needed
+
+        // Check out multiple repos
+
         // stage('Checkout Code') {
         //     steps {
         //         checkout scm
