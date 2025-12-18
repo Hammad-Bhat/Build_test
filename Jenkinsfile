@@ -23,9 +23,9 @@ pipeline {
     steps {
         bat '''
         docker run --rm ^
+        python:3.11-slim ^
         -v "%WORKSPACE%:/app" ^
         -w /app ^
-        python:3.11-slim ^
         sh -c "pip install pytest && python -m pytest python/maths/tests/test_fibonacci.py"
         '''
     }
