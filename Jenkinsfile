@@ -9,7 +9,7 @@ pipeline {
 
         stage('Verify Python') {
             steps {
-                bat '"C:\\Users\\Hammad\\AppData\\Local\\Programs\\Python\\Python314\\python.exe" --version'
+                bat 'python.exe --version'
             }
         }
 
