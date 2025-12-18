@@ -2,7 +2,7 @@ pipeline {
     agent any
 
      environment {
-        FIB_INPUT = credentials(99)  // secret ID
+        FIB_INPUT = credentials('99')  // secret ID
     }
 
 
