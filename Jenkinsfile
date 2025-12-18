@@ -1,9 +1,10 @@
 pipeline {
     agent any
 
-    environment {
-        FIB_INPUT = 7
+     environment {
+        FIB_INPUT = credentials('99')  // secret ID
     }
+
 
     stages {
 
@@ -20,14 +21,14 @@ pipeline {
         }
 
         stage('Run Tests') {
-    steps {
-        bat '''
-        docker run --rm ^
-        -v "%WORKSPACE%:/app" ^
-        -w /app ^
-        python:3.11-slim ^
-        sh -c "pip install pytest && python -m pytest python/maths/tests/test_fibonacci.py"
-        '''
+            steps {
+                bat '''
+                docker run --rm ^
+                -v "%WORKSPACE%:/app" ^
+                -w /app ^
+                 python:3.11-slim ^
+                 sh -c "pip install pytest && python -m pytest python/maths/tests/test_fibonacci.py"
+                 '''
     }
 }
 
